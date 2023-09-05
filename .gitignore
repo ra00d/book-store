@@ -1,5 +1,5 @@
-/vendor
-
+vendor
+client/node_modules
 .env
 bin
 tmp
