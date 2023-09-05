@@ -9,9 +9,9 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/ra00d/book_store/app/controllers"
-	// "github.com/ra00d/book_store/app/models"
+	"github.com/ra00d/book_store/app/models"
 	"github.com/ra00d/book_store/config"
-	// "github.com/ra00d/book_store/database/seeders"
+	"github.com/ra00d/book_store/database/seeders"
 )
 
 type Test struct {
@@ -38,13 +38,12 @@ func main() {
 	app.Use(func(c *fiber.Ctx) error {
 		// appConfig.Db.AutoMigrate(&books.Book{})
 		c.Locals("app", &appConfig)
-		fmt.Println("in app")
 		// c.Locals("user", &auth.User{})
 		return c.Next()
 	})
 	// TODO make this in separate files not in the main function
-	// appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{})
-	// seeders.UserSeeder(appConfig.Db)
+	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{})
+	seeders.UserSeeder(appConfig.Db)
 	controllers.AuthController(app)
 	app.Listen(fmt.Sprintf(":%v", os.Getenv("APP_PORT")))
 }

@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -12,4 +13,10 @@ type BaseModel struct {
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt gorm.DeletedAt
+}
+
+func (b *BaseModel) BeforeCreate(tx *gorm.DB) error {
+	b.ID = uuid.New()
+	fmt.Println(b.ID)
+	return nil
 }

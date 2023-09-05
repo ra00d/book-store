@@ -1,8 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
-
 	"github.com/go-playground/locales/en"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
@@ -30,7 +28,6 @@ func Validate(body interface{}) fiber.Handler {
 				"code":    "422",
 			})
 		}
-		fmt.Println(body)
 		err = validate.Struct(body)
 		if err != nil {
 			errs := err.(validator.ValidationErrors)

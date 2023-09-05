@@ -11,4 +11,5 @@ func AuthController(app *fiber.App) {
 	// ! DO NOT ADD NIL HANDLER
 	router := app.Group("auth")
 	router.Post("login", middlewares.Validate(&requests.LoginRequestBody{}), handlers.Login)
+	router.Post("signup", middlewares.Validate(&requests.SignUpRequest{}), handlers.SignUp)
 }
