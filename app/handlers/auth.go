@@ -6,18 +6,14 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/ra00d/book_store/app/helpers"
 	"github.com/ra00d/book_store/app/models"
+	"github.com/ra00d/book_store/app/requests"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )
 
-type LoginRequestBody struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
-}
-
 func Login(c *fiber.Ctx) error {
 	db := helpers.GetDb(c)
-	body := LoginRequestBody{}
+	body := requests.LoginRequestBody{}
 	user := new(models.User)
 	if err := c.BodyParser(&body); err != nil {
 		return c.Status(500).JSON(fiber.Map{
