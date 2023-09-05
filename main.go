@@ -10,6 +10,7 @@ import (
 
 	"github.com/ra00d/book_store/app/models"
 	"github.com/ra00d/book_store/config"
+	// "github.com/ra00d/book_store/database/seeders"
 )
 
 type Test struct {
@@ -39,7 +40,8 @@ func main() {
 		// c.Locals("user", &auth.User{})
 		return c.Next()
 	})
-
+	// TODO make this in separate files not in the main function
 	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{})
+	// seeders.UserSeeder(appConfig.Db)
 	app.Listen(fmt.Sprintf(":%v", os.Getenv("APP_PORT")))
 }
