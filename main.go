@@ -8,6 +8,7 @@ import (
 	"github.com/gofiber/template/django/v3"
 	"github.com/joho/godotenv"
 
+	"github.com/ra00d/book_store/app/models"
 	"github.com/ra00d/book_store/config"
 )
 
@@ -39,5 +40,6 @@ func main() {
 		return c.Next()
 	})
 
+	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{})
 	app.Listen(fmt.Sprintf(":%v", os.Getenv("APP_PORT")))
 }
