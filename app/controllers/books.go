@@ -9,4 +9,7 @@ func BooksController(app *fiber.App) {
 	// ! DO NOT ADD NIL HANDLER
 	router := app.Group("books")
 	router.Get("", handlers.GetBooksHandler)
+	router.Post("", handlers.CreateBookHandler)
+	router.Get("/:id", handlers.GetBookHandler)
+	router.Delete("/:id", handlers.DeleteBookHandler)
 }

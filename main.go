@@ -11,9 +11,9 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/ra00d/book_store/app/controllers"
-	"github.com/ra00d/book_store/app/models"
+	// "github.com/ra00d/book_store/app/models"
 	"github.com/ra00d/book_store/config"
-	"github.com/ra00d/book_store/database/seeders"
+	// "github.com/ra00d/book_store/database/seeders"
 )
 
 type Test struct {
@@ -45,8 +45,8 @@ func main() {
 		return c.Next()
 	})
 	// TODO make this in separate files not in the main function
-	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{}, &models.Like{}, &models.Comment{}, &models.Book{})
-	seeders.UserSeeder(appConfig.Db)
+	// appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{}, &models.Like{}, &models.Comment{}, &models.Book{})
+	// seeders.UserSeeder(appConfig.Db)
 	// seeders.BooksSeeder(appConfig.Db)
 	controllers.AuthController(app)
 	controllers.BooksController(app)

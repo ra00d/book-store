@@ -7,7 +7,7 @@ type Book struct {
 	Name    string    `json:"name" form:"name" gorm:"unique"`
 	Auther  string    `json:"auther" form:"auther"`
 	Edition string    `json:"edition" form:"edition"`
-	Image   string    `json:"image" form:"image"`
+	Image   string    `json:"cover" form:"cover"`
 	File    string    `json:"file" form:"file"`
 	UserID  uuid.UUID `json:"userID" form:"userID"`
 	User    User      `json:"user" form:"user"`
