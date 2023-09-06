@@ -41,15 +41,15 @@ func CreateBookHandler(c *fiber.Ctx) error {
 			"message":    "unable to parser the cover image",
 		})
 	}
-	book.Image = fmt.Sprintf("./storage/uploads/covers/%s", image.Filename)
-	if err := c.SaveFile(image, book.Image); err != nil {
+	book.Image = fmt.Sprintf("uploads/covers/%s", image.Filename)
+	if err := c.SaveFile(image, fmt.Sprintf("./storage/uploads/covers/%s", image.Filename)); err != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"statusCode": 500,
 			"message":    "unable to save the cover image",
 		})
 	}
-	book.File = fmt.Sprintf("./storage/uploads/pdfs/%s", pdf.Filename)
-	if err := c.SaveFile(pdf, book.File); err != nil {
+	book.File = fmt.Sprintf("uploads/pdfs/%s", pdf.Filename)
+	if err := c.SaveFile(pdf, fmt.Sprintf("./storage/uploads/pdfs/%s", pdf.Filename)); err != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"statusCode": 500,
 			"message":    "unable to save the cover image",
