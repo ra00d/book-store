@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/template/django/v3"
 	"github.com/joho/godotenv"
 
@@ -28,7 +30,8 @@ func main() {
 		EnablePrintRoutes: true,
 		PassLocalsToViews: true,
 	})
-	// app.Static("", "./public")
+	app.Static("", "./public")
+	app.Use(filesystem.New(filesystem.Config{Root: http.Dir("./storage/")}))
 	app.Get("/test", func(c *fiber.Ctx) error {
 		return c.JSON("test")
 	})
