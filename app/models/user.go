@@ -20,6 +20,7 @@ type User struct {
 	LastLoginIp string
 	Enabled     bool `json:"enabled" gorm:"default:true"`
 	rmemeberMe  string
+	Likes       []Like `json:"likes" form:"likes"`
 }
 type Role struct {
 	ID   int    `gorm:"primaryKey,autoIncrement" `

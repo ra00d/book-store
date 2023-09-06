@@ -42,8 +42,10 @@ func main() {
 		return c.Next()
 	})
 	// TODO make this in separate files not in the main function
-	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{})
+	appConfig.Db.AutoMigrate(&models.Permission{}, &models.Role{}, &models.User{}, &models.Like{}, &models.Comment{}, &models.Book{})
 	seeders.UserSeeder(appConfig.Db)
+	// seeders.BooksSeeder(appConfig.Db)
 	controllers.AuthController(app)
+	controllers.BooksController(app)
 	app.Listen(fmt.Sprintf(":%v", os.Getenv("APP_PORT")))
 }
