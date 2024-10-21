@@ -7,7 +7,6 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
-	"github.com/gofiber/template/django/v3"
 	"github.com/joho/godotenv"
 
 	"github.com/ra00d/book_store/app/controllers"
@@ -23,12 +22,12 @@ type Test struct {
 
 func main() {
 	godotenv.Load()
-	engine := django.New("./views", ".html")
+	// engine := django.New("./views", ".html")
 	app := fiber.New(fiber.Config{
-		Views:             engine,
-		ViewsLayout:       "layouts/main",
-		EnablePrintRoutes: true,
-		PassLocalsToViews: true,
+		// Views:             engine,
+		// ViewsLayout:       "layouts/main",
+		// EnablePrintRoutes: true,
+		// PassLocalsToViews: true,
 	})
 	app.Static("", "./public")
 	app.Use(filesystem.New(filesystem.Config{Root: http.Dir("./storage/")}))

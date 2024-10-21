@@ -16,7 +16,7 @@ type AppConfig struct {
 func (conf *AppConfig) Init() {
 	conf.Db = database.Connect()
 	storage := sqlite3.New(sqlite3.Config{
-		Database: "./sessions.db",
+		Database: "./books.db",
 		Table:    "session_data",
 	})
 	conf.SessionStore = session.New(session.Config{

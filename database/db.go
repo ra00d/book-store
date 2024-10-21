@@ -16,6 +16,7 @@ func Connect() *gorm.DB {
 		TranslateError: true,
 	})
 	if err != nil {
+		// fmt.Println(err)
 		panic("failed to connect database")
 	}
 	return db
